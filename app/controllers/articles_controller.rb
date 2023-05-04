@@ -3,6 +3,7 @@
 # So the index action will render app/views/articles/index.html.erb by default.
 class ArticlesController < ApplicationController
   def index
+    @articles = Article.all
   end
 end
  
