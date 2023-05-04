@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   ## to create ArticlesController and its index action, run the controller generator (with --skip-routes because we already have a route) in terminal
   ## bin/rails generate controller Articles index --skip-routes
 
+  get "/articles/:id", to: "articles#show"
+
 end
