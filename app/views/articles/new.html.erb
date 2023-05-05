@@ -1,17 +1,27 @@
 # The form_with helper method instantiates a form builder. 
 # In the form_with block we call methods like label and text_field on the form builder to output the appropriate form elements.
 
+# Explanation for line 14-16:
+# the full_messages_for(:body) method is called on the @article.errors object to get an array of error messages specifically for the body attribute of the Article model. 
+# The each method is then called on the resulting array to iterate over each error message and generate a <div> element for it to display in the HTML.
+
 <h1>New Article</h1>
 
 <%= form_with model: @article do |form| %>
   <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
     <%= form.label :body %><br>
-    <%= form.text_area :body %>
+    <%= form.text_area :body %><br>
+    <% @article.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
